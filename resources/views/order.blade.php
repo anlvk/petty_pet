@@ -17,8 +17,8 @@
 
 <!--@include('calculator')-->
 
-@include('layouts.bathroomCalculate')
 
-<br>
 
-@include('layouts.roomCalculate')
+@include('calculations.room')
+
+@include('calculations.bathroom')

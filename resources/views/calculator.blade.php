@@ -92,6 +92,6 @@ Result: <br>
 </script>
 
 
-@include('layouts.roomCalculate')
+@include('calculations.room')
 
-@include('layouts.bathroomCalculate')
+@include('calculations.bathroom')
