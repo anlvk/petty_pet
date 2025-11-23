@@ -42,41 +42,8 @@ Route::get('/calculator', function () {
     return view('calculator');
 });
 
-
-
-
-/***
-Route::post('/bathroom/upgrade/{result}', function (string $result) {
-    return view('calculator', 
-    ['result' => (int) $result,]);
-});
-
-Route::post('/bathroom/downgrade/{result}', function (string $result) {
-    return view('calculator', 
-    ['result' => (int) $result,]);
-});
-*/
-
-#Route::post('/bathroom/upgrade/{result}', ['CalculatorController@bathroomUpgrade']);
-
-#Route::post('/bathroom/downgrade/{result}', ['CalculatorController@bathroomDowngrade']);
-
-#Route::post('/bathroomAction', ['CalculatorController@bathroomAction']);
-
-#Route::post('/bathroomAction', [CalculatorController::class, 'bathroomAction'])->name('bathroomAction');
-
-#Route::get('/order/action', function () {});
-
-#Route()::post('/bathroom/upgrade', ['CalculatorController@bathroomUpgrade']);
-
-#Route()::post('/bathroom/downgrade', ['CalculatorController@bathroomDowngrade']);
-
-//Route::post('/bathroomAction', ['CalculatorController@bathroomAction']);
-
 Route::post('/bathroomAction', [CalculatorController::class, 'bathroomAction']);
 Route::post('/roomAction', [CalculatorController::class, 'roomAction']);
-
-
 
 Route::get('/bathroom', function () {
     return view('calculations.bathroom');

@@ -14,11 +14,4 @@
 <br>
 
 
-
-<!--@include('calculator')-->
-
-
-
-@include('calculations.room')
-
-@include('calculations.bathroom')
+@include('calculator')
