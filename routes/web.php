@@ -79,9 +79,9 @@ Route::post('/roomAction', [CalculatorController::class, 'roomAction']);
 
 
 Route::get('/bathroom', function () {
-    return view('layouts.bathroomCalculate');
+    return view('calculations.bathroom');
 });
 
 Route::get('/room', function () {
-    return view('layouts.roomCalculate');
+    return view('calculations.room');
 });
