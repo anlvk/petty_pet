@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CalculatorController;
 
+use App\Http\Controllers\UserController;
+
 Route::get('/main', function () {
     return view('welcome');
 });
@@ -52,3 +54,26 @@ Route::get('/bathroom', function () {
 Route::get('/room', function () {
     return view('calculations.room');
 });
+
+Route::get('/calendar', function () {
+    return view('calendar');
+});
+
+
+/***
+Route::get('/users/index', function () {
+    //dd(get_defined_vars());
+    return view('users.index');
+});
+*/
+
+
+Route::get('/users/index', [UserController::class, 'index']);
+
+Route::get('/users/posts', [UserController::class, 'posts']);
+
+/***
+Route::get('/users/posts', function () {
+    return view('users.posts');
+});
+*/
