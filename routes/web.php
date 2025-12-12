@@ -61,30 +61,9 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
-
-/***
-Route::get('/users/index', function () {
-    //dd(get_defined_vars());
-    return view('users.index');
-});
-*/
-
-
 Route::get('/users/index', [UserController::class, 'index']);
 
 Route::get('/users/posts', [UserController::class, 'posts']);
-
-/***
-Route::get('/users/posts', function () {
-    return view('users.posts');
-});
-*/
-
-/***
-Route::get('/appointment', function () {
-    return view('appointment');
-});
-*/
 
 Route::get('/appointment', [AppointmentController::class, 'show']);
 
