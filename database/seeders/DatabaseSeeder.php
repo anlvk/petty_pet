@@ -15,13 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        User::factory(10)->create();
 
+        /***
         foreach(range(0, 10) as $user) {
             User::factory()->create([
             'name' => "User $user",
             'email' => "test$user@example.com",
         ]);
         }
+        */
     }
 }

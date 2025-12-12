@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Log;
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CalculatorController;
-
 use App\Http\Controllers\UserController;
+
+use App\Models\Appointment;
 
 Route::get('/main', function () {
     return view('welcome');
@@ -59,21 +61,10 @@ Route::get('/calendar', function () {
     return view('calendar');
 });
 
-
-/***
-Route::get('/users/index', function () {
-    //dd(get_defined_vars());
-    return view('users.index');
-});
-*/
-
-
 Route::get('/users/index', [UserController::class, 'index']);
 
 Route::get('/users/posts', [UserController::class, 'posts']);
 
-/***
-Route::get('/users/posts', function () {
-    return view('users.posts');
-});
-*/
+Route::get('/appointment', [AppointmentController::class, 'show']);
+
+Route::get('/appointment/create', [AppointmentController::class, 'create']);
