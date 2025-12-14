@@ -5,8 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
-use Illuminate\Support\Facades\Log;
-
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CalculatorController;
@@ -68,3 +66,7 @@ Route::get('/users/posts', [UserController::class, 'posts']);
 Route::get('/appointment', [AppointmentController::class, 'show']);
 
 Route::get('/appointment/create', [AppointmentController::class, 'create']);
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+
+Route::post('/users/setDoctor', [UserController::class, 'setDoctor']);

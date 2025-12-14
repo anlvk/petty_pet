@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Doctor;
 
 class UserController extends Controller
 {
@@ -38,5 +39,32 @@ class UserController extends Controller
         $posts = User::hasMany(Post::class);
 
         return view('users.posts')->with('posts', $posts);
+    }
+
+
+    public function show(Request $request, int $userID) {
+        #1/ выделить из базы соответствие доктору
+        $user = User::where('id', $userID)->first();
+        $isDoctor = Doctor::where('user_id', $userID)->value('id');
+
+        return view('users.user', compact('user', 'isDoctor'));
+        #2/ добавить возможность стать доктором (чек-бокс)
+        #3/ чек-бокс сразу обновляет юзера на доктора
+    }
+
+    public function setDoctor(Request $request) {
+        $isDoctor = (int) $request->input('isDoctor') ?? "";
+        //dd($request->toArray());
+        if ($isDoctor) {
+            $doctor = new Doctor();
+            $doctor->user_id = $isDoctor;
+            $doctor->save();
+        } else {
+            $userID = (int) $request->input('userID') ?? 0;
+            //dd($userID);
+            Doctor::where('user_id', $userID)->delete();
+        }
+
+        return redirect()->back();
     }
 }
