@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
-use Illuminate\Support\Facades\Log;
-
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\UserController;
+
+use App\Models\Appointment;
 
 Route::get('/main', function () {
     return view('welcome');
@@ -52,3 +54,19 @@ Route::get('/bathroom', function () {
 Route::get('/room', function () {
     return view('calculations.room');
 });
+
+Route::get('/calendar', function () {
+    return view('calendar');
+});
+
+Route::get('/users/index', [UserController::class, 'index']);
+
+Route::get('/users/posts', [UserController::class, 'posts']);
+
+Route::get('/appointment', [AppointmentController::class, 'show']);
+
+Route::get('/appointment/create', [AppointmentController::class, 'create']);
+
+Route::get('/users/{user}', [UserController::class, 'show']);
+
+Route::post('/users/setDoctor', [UserController::class, 'setDoctor']);
