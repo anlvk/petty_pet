@@ -73,9 +73,9 @@ class UserController extends Controller
         $spec = $request->input('specialization') ?? "";
         $userID = (int) $request->input('userID') ?? 0;
 
-        $request->session()->flash('success', 'The item has been added successfully!');
-
         if(!empty($spec)) {
+            $request->session()->flash('success', 'The item has been added successfully!');
+
             $doctor = Doctor::where("user_id", $userID)->first();
             $doctor->specialization = $spec;
             $doctor->save();
