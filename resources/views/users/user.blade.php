@@ -29,5 +29,23 @@
                 <input type="hidden" name="userID" value="{{ $user->id }}" readonly>
                 <input type="checkbox" id="isDoctorID" name="isDoctor" value="{{ $user->id }}" {{ ($isDoctor) ? 'checked' : '' }} onClick="toSetDoctor()">
             </form>
+
+            @if (($isDoctor))
+            {{-- Check if a 'success' flash message exists --}}
+                @if(session()->has('success'))
+                    <div class="alert alert-success" style="background-color: green; color: white;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                {{-- Check for an 'error' or 'danger' message --}}
+                @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @includeIf('users.doctor', ["userID" => $user->id])
+            @endif
     </body>
 </html>

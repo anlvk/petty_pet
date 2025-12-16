@@ -67,6 +67,8 @@ Route::get('/appointment', [AppointmentController::class, 'show']);
 
 Route::get('/appointment/create', [AppointmentController::class, 'create']);
 
-Route::get('/users/{user}', [UserController::class, 'show']);
+Route::get('/users/{user}', [UserController::class, 'show'])->name('user');
 
 Route::post('/users/setDoctor', [UserController::class, 'setDoctor']);
+
+Route::post('/users/doctor', [UserController::class, 'updateDoctor']);

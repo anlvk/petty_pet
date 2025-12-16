@@ -50,6 +50,7 @@ class UserController extends Controller
         return view('users.user', compact('user', 'isDoctor'));
         #2/ добавить возможность стать доктором (чек-бокс)
         #3/ чек-бокс сразу обновляет юзера на доктора
+        #4/ добавить указание специализации для доктора
     }
 
     public function setDoctor(Request $request) {
@@ -66,5 +67,20 @@ class UserController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function updateDoctor(Request $request) {
+        $spec = $request->input('specialization') ?? "";
+        $userID = (int) $request->input('userID') ?? 0;
+
+        $request->session()->flash('success', 'The item has been added successfully!');
+
+        if(!empty($spec)) {
+            $doctor = Doctor::where("user_id", $userID)->first();
+            $doctor->specialization = $spec;
+            $doctor->save();
+        }
+
+        return redirect()->route('user', ['user' => $userID])->with('success', 'Specification updated');
     }
 }
